@@ -1,0 +1,148 @@
+{
+  "spider_name": "universal",
+  "description": "人民网tv",
+  "type": "视频",
+  "index": "http://tv.people.com.cn/GB/222296/index.html",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.MySQLPipelineUnique": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://tv.people.com.cn/GB/222296/index.html",
+      "http://tv.people.com.cn/GB/222296/index2.html",
+      "http://tv.people.com.cn/GB/222296/index3.html",
+      "http://tv.people.com.cn/GB/222296/index4.html"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "splash": {
+    "auth": {
+      "user": "admin",
+      "password": "admin"
+    }
+  },
+  "allowed_domains": [],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='/html/body/div[4]/ul/li/a[1]'), callback='parse_item',process_request='splash_request')]",
+  "item": {
+    "class": "VideoItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[1]/div[1]/div[1]/h2/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[1]/div[3]/div/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "replace",
+          "args": [
+            "发布时间:",
+            ""
+          ]
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y年%m月%d日%H:%M",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/h1/p/a/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "content": [
+        {
+          "method": "set_value",
+          "args": [
+            "此网站无"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "crawled_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "video": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"pvpShowDiv\"]/object/embed/@*"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/span/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "video_url": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"pvpShowDiv\"]/object/param[1]/@value"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ]
+    }
+  }
+}

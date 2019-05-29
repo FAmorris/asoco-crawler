@@ -1,0 +1,156 @@
+{
+  "spider_name": "universal",
+  "description": "81电视",
+  "type": "视频",
+  "index": "http://tv.81.cn/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    },
+    "DEFAULT_REQUEST_HEADERS": {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "value": [
+      "http://tv.81.cn/jq360/index.htm",
+      "http://tv.81.cn/jlwyx/index.htm",
+      "http://tv.81.cn/bysp/index.htm",
+      "http://tv.81.cn/jbmdm/index.htm"
+    ],
+    "splash": {
+      "enable": true,
+      "args": {
+        "wait": 2
+      }
+    }
+  },
+  "splash": {
+    "auth": {
+      "user": "admin",
+      "password": "admin"
+    }
+  },
+  "allowed_domains": [
+    "tv.81.cn"
+  ],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='//*[@id=\"main-news-list\"]/div/li/a'), callback='parse_item',process_request='splash_request')]",
+  "item": {
+    "class": "VideoItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[1]/h2/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[2]/div[1]/div[2]/span[4]/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[2]/div[1]/div[2]/span[1]/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "content": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"article-content\"]/p/text()"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawled_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "video": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"cmplayer\"]/object/param[1]"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[1]/ol/a/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "video_url": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"cmplayer\"]/object/param[1]"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ]
+    }
+  }
+}

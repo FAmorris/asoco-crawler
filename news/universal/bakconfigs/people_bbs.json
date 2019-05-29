@@ -1,0 +1,135 @@
+{
+  "spider_name": "universal",
+  "description": "人民网-强国论坛",
+  "type": "论坛",
+  "index": "http://bbs1.people.com.cn/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://bbs1.people.com.cn/"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+    "bbs1.people.com.cn"
+  ],
+  "rules": "[Rule(LinkExtractor(restrict_css='div.nav_bottom ul.clearfix li:nth-child(2) a'), follow=True),Rule(LinkExtractor(restrict_css='ul.replayList p.treeTitle a.treeReply'), callback='parse_item')]",
+  "item": {
+    "class": "PostItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "title::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "css",
+          "args": [
+            "p.replayInfo"
+          ]
+        },
+        {
+          "method": "re_first",
+          "args": [
+            "(\\d+\\-\\d+\\-\\d+\\s*\\d+:\\d+:\\d+)</span>"
+          ]
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M:%S",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hot": [
+        {
+          "method": "css",
+          "args": [
+            "p.replayInfo span.readNum::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "replies": [
+        {
+          "method": "css",
+          "args": [
+            "p.replayInfo span.replayNum::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "hits": [
+        {
+          "method": "css",
+          "args": [
+            "p.replayInfo span.readNum::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "div.article.scrollFlag::attr(content_path)"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "get_content",
+          "type": "wrap"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "人民网"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "spider_name": "universal",
+  "description": "草根网",
+  "type": "新闻",
+  "index": "http://www.caogen.com",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 301
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://www.caogen.com/infor_more/9/1.html",
+      "http://www.caogen.com/infor_more/2/1.html",
+      "http://www.caogen.com/infor_more/3/1.html",
+      "http://www.caogen.com/infor_more/4/1.html",
+      "http://www.caogen.com/infor_more/5/1.html",
+      "http://www.caogen.com/infor_more/6/1.html",
+      "http://www.caogen.com/infor_more/7/1.html",
+      "http://www.caogen.com/infor_more/8/1.html"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+    "www.caogen.com"
+  ],
+  "rules": "[Rule(LinkExtractor(allow='infor_more/[2-9]?/[0-9]?.html',restrict_xpaths=\"//a[contains(.,'下一页')]\"),follow=True ,callback='parse_item1'),Rule(LinkExtractor(allow='blog/infor_detail/[0-9]+?.html', restrict_xpaths=\"//table[@id = 'Comment_list']//tr//a[1]\"), callback='parse_item'),]",
+  "item": {
+    "class": "NewsItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "//span[@id='Blog_Infor']//text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "//span[@id ='Intime']/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "strip"
+        },
+        {
+          "method": "padtime_for_caogen",
+          "args": [
+            " 00:00:00"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hot": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "xpath",
+          "args": [
+            "//span[@id='Content']/text()"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "草根网"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "xpath",
+          "args": [
+            "//span[@id='Head1_tag']//text() | //a[@id='Head1_BlogID']/text()"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "cut_from_tail",
+          "args": [
+            -2
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

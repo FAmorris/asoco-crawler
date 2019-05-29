@@ -1,0 +1,12 @@
+{
+  "tests.py::test_addfile": true,
+  "tests.py::test_admin": true,
+  "tests.py::test_config": true,
+  "tests.py::test_delete": true,
+  "tests.py::test_do_not_use": true,
+  "tests.py::test_do_use": true,
+  "tests.py::test_jsoneditor": true,
+  "tests.py::test_readcontent": true,
+  "tests.py::test_seelog": true,
+  "tests.py::test_setCrawlInterval": true
+}

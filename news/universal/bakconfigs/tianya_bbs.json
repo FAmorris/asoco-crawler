@@ -1,0 +1,156 @@
+{
+  "spider_name": "universal",
+  "description": "天涯论坛",
+  "type": "博客",
+  "index": "http://bbs.tianya.cn/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://bbs.tianya.cn/hotArticle.jsp?pn=1",
+      "http://focus.tianya.cn/"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='//div[@class=\"long-pages\"]/a[contains(., \"下页\")]'), follow=True), Rule(LinkExtractor(restrict_css='table td.td-title a'), callback='parse_item'), Rule(LinkExtractor(restrict_css='ul.bbs-area.fl a'), follow=True), Rule(LinkExtractor(restrict_xpaths='//a[@desc=\"标题\" and contains(., \"post\")]'), callback='parse_item')]",
+  "item": {
+    "class": "PostItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "div#post_head span::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "css",
+          "args": [
+            "div.atl-menu.clearfix.js-bbs-act div.atl-info span::text"
+          ]
+        },
+        {
+          "method": "get_bbs_info",
+          "args": [
+            1
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M:%S",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hot": [
+        {
+          "method": "css",
+          "args": [
+            "div.atl-menu.clearfix.js-bbs-act div.atl-info span::text"
+          ]
+        },
+        {
+          "method": "get_bbs_info",
+          "args": [
+            2
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "replies": [
+        {
+          "method": "css",
+          "args": [
+            "div.atl-menu.clearfix.js-bbs-act div.atl-info span::text"
+          ]
+        },
+        {
+          "method": "get_bbs_info",
+          "args": [
+            3
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "hits": [
+        {
+          "method": "css",
+          "args": [
+            "div.atl-menu.clearfix.js-bbs-act div.atl-info span::text"
+          ]
+        },
+        {
+          "method": "get_bbs_info",
+          "args": [
+            2
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "div.bbs-content.clearfix"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "filter_tags",
+          "type": "wrap"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "天涯论坛"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

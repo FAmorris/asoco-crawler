@@ -1,0 +1,150 @@
+{
+  "spider_name": "universal",
+  "description": "国防部tv",
+  "type": "视频",
+  "index": "http://www.mod.gov.cn/v/node_47009.htm",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.MySQLPipelineUnique": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://www.mod.gov.cn/v/node_47009.htm",
+      "http://www.mod.gov.cn/v/node_47009_2.htm",
+      "http://www.mod.gov.cn/v/node_47009_3.htm",
+      "http://www.mod.gov.cn/v/node_47009_4.htm"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "splash": {
+    "auth": {
+      "user": "admin",
+      "password": "admin"
+    }
+  },
+  "allowed_domains": [],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='/html/body/div[1]/div[1]/div/div/a'), callback='parse_item',process_request='splash_request')]",
+  "item": {
+    "class": "VideoItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[2]/div[1]/h1/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[2]/div[1]/div[2]/span[4]/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[2]/div[1]/div[2]/span[1]/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "content": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"article-content\"]/p/text()"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawled_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "video": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"video-0\"]/video/@*"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "xpath",
+          "args": [
+            "/html/body/div[3]/div/div[2]/div[1]/div[2]/span[2]/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "video_url": [
+        {
+          "method": "xpath",
+          "args": [
+            "//*[@id=\"video-0\"]/video/source/@src"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ]
+    }
+  }
+}

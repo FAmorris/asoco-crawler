@@ -1,0 +1,210 @@
+{
+  "spider_name": "universal",
+  "description": "华声论坛",
+  "type": "论坛",
+  "index": "http://bbs.voc.com.cn/forum-76-1.html",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    },
+    "DEFAULT_REQUEST_HEADERS": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "Accept-Language": "en",
+      "Cache-Control": "max-age=0",
+      "Connection": "keep-alive",
+      "Host": "bbs.voc.com.cn",
+      "Referer": "http://bbs.voc.com.cn/forum-76-2.html",
+      "Upgrade-Insecure-Requests": "1"
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://bbs.voc.com.cn/forum-76-1.html"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+    "bbs.voc.com.cn"
+  ],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='/html/body/center/form/div/table/tr/td[3]/a[@class=\"a1\"]'), callback='parse_item')]",
+  "item": {
+    "class": "PostItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "td.tbfltd2>div>div:nth-child(2)>div>h1::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "title"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "css",
+          "args": [
+            "td.tbfltd2>div>div:nth-child(1)>div:nth-child(1)::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "publish_time"
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "replace",
+          "args": [
+            "发表时间：",
+            ""
+          ]
+        }
+      ],
+      "hot": [
+        {
+          "method": "css",
+          "args": [
+            "td.header> div.right > b:nth-child(1)::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "hot"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "css",
+          "args": [
+            " td.tbfltd2>div>div:nth-child(2)>div>span>font:nth-child(1)::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "author"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "css",
+          "args": [
+            "td.header> div.right > b:nth-child(2)::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "replies"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "css",
+          "args": [
+            "td.header> div.right > b:nth-child(1)::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "hot"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "td.tbfltd2 > div > div:nth-child(2) > div > div.t_msgfont.BSHARE_POP.BSHARE_IMAGE_CLASS::text"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "content"
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "华声论坛"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

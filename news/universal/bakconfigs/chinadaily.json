@@ -1,0 +1,176 @@
+{
+  "spider_name": "universal",
+  "description": "中国日报",
+  "type": "新闻",
+  "index": "http://china.chinadaily.com.cn/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://china.chinadaily.com.cn/node_1143902.htm"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [],
+  "rules": "[Rule(LinkExtractor(allow='node_1143902_?(\\d)*.htm', restrict_xpaths='//div[@id=\"div_page_roll1\"]/a[contains(., \"下一页\")]'), follow=True), Rule(LinkExtractor(allow='.*/content_(\\d)+.htm', restrict_xpaths='//div[@class=\"left-liebiao\"]//a'), callback='parse_item')]",
+  "item": {
+    "class": "NewsItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "h1.dabiaoti::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "replace",
+          "args": [
+            "\n",
+            ""
+          ]
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "css",
+          "args": [
+            "#pubtime::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M:%S",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "css",
+          "args": [
+            "#source::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "set_default_source_chinadaily",
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "css",
+          "args": [
+            "#source::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "set_default_author_chinadaily",
+          "type": "wrap"
+        }
+      ],
+      "hot": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "#Content p::text"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "中国日报"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

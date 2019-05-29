@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>可视化爬虫系统</title>
+    <link href="/static/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/lib/buttons.css" rel="stylesheet">
+    <link href="/static/lib/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="/static/templatemo-style.css" rel="stylesheet">
+
+    <script src="/static/lib/jquery.min.js"></script>
+    <script src="/static/lib/vue.min.js"></script>
+    <script src="/static/lib/jquery.cookie.min.js"></script>
+    <script src="/static/lib/popper.min.js"></script>
+    <script src="/static/lib/bootstrap.min.js"></script>
+
+    <script src="/static/lib/bootstrap-switch.min.js"></script>
+    <script src="/static/lib/bootstrap-filestyle.min.js"></script>
+    <script src="/static/templatemo-script.js"></script>
+    <style>
+        .modal p {
+            font-size: 20px;
+        }
+
+        .radio-img {
+            text-align: center;
+        }
+
+        .radio-img img {
+            margin-top: 20px;
+        }
+
+        .radio-img .selected {
+            border-width: 2px;
+            border-top-width: 15px;
+            border-style: solid;
+            border-color: #761c19;
+            border-bottom-right-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+
+
+{#消息模态框#}
+
+<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    消息提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ msg }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit"
+                        class="btn btn-block btn-rounded btn-danger button-large"
+                        data-dismiss="modal">
+                    我知道了
+                </button>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!-- Left column -->
+<div class="templatemo-flex-row">
+    <div class="templatemo-sidebar  {{ sideCollapse }}">
+        <div id="sidebar-collapse-button">
+            <span class="fa fa-bars fa-2x"></span>
+        </div>
+        <header class="templatemo-site-header">
+            <div class="square"></div>
+            <h1>可视化爬虫系统</h1>
+        </header>
+        <div class="profile-photo-container">
+            <img src="/static/images/gerapy.png" alt="Profile Photo" class="img-responsive">
+            <div class="profile-photo-overlay"></div>
+        </div>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">
+            <ul>
+                <li><a href="manage"><i class="fa fa-home fa-2x"></i><span>新闻爬虫</span></a></li>
+                <li><a href="weibo"><i class="fa fa-home fa-2x"></i><span>微博爬虫</span></a></li>
+                <li><a href="config" class="active"><i class="fa fa-gear fa-2x"></i><span>系统设置</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Main content -->
+    <div class="templatemo-content col-1 light-gray-bg">
+
+        <div class="templatemo-content-container">
+
+            <div class="templatemo-flex-row flex-content-row">
+
+                <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+                    <div class="panel-heading">
+                        JSON编辑器选择
+                    </div>
+                    <div class="panel-content">
+                        <div class="radio-img">
+                            <img class="img-rounded selected" src="/static/images/treema.jpg" width="80%"
+                                 data-editor="treema">
+                            <img class="img-rounded" src="/static/images/jsoneditor.jpg" width="80%"
+                                 data-editor="jsoneditor">
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- Second row ends -->
+            <div class="templatemo-flex-row flex-content-row">
+
+                <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+                    <div class="panel-heading">
+                        爬虫休息时间设置
+                    </div>
+                    <div class="panel-content">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group" style="padding-top: 10px">
+                                <label for="hourInput" class="col-sm-1 control-label">小时</label>
+                                <span class="col-sm-1">
+                                <input type="number" class="form-control" id="hourInput"
+                                       placeholder="小时" min="0" max="24" style="border: none">
+                                </span>
+
+                                <label for="minuteInput" class="col-sm-1 control-label">分钟</label>
+                                <span class="col-sm-1">
+                                <input type="number" class="form-control" id="minuteInput"
+                                       placeholder="分钟" min="0" max="60" style="border: none">
+                                </span>
+
+                                <label for="secondInput" class="col-sm-1 control-label">秒</label>
+                                <span class="col-sm-1">
+                                <input type="number" class="form-control" id="secondInput"
+                                       placeholder="秒" min="0" max="60" style="border: none">
+                                </span>
+
+                                <button id="submitTimeInput" class="btn btn-primary">
+                                    提交
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- Second row ends -->
+            <footer class="text-right">
+                <p>Copyright &copy; 2017 BUAA</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var msg = "{{ msg }}"
+    var nowRestTime = parseInt("{{ crawlInterval }}")
+
+    function showMsgModal(msg) {
+        if (msg != null && msg.length > 0) {
+            $("#msgModal .modal-body").text(msg)
+            $("#msgModal").modal()
+        }
+    }
+
+    function configTime() {
+        $("#hourInput").val(Math.floor(nowRestTime / 3600))
+        $("#minuteInput").val(Math.floor(nowRestTime / 60) % 60)
+        $("#secondInput").val(nowRestTime % 60)
+        $("#submitTimeInput").click(function () {
+            if ($("#hourInput").val() < 0 || $("#hourInput").val() >= 24) {
+                showMsgModal("小时数值应该在0~24")
+                event.preventDefault()
+                return
+            }
+            if ($("#minuteInput").val() < 0 || $("#minuteInput").val() >= 60) {
+                showMsgModal("分钟数值应该在0~60")
+                event.preventDefault()
+                return
+            }
+            if ($("#secondInput").val() < 0 || $("#minuteInput").val() >= 60) {
+                showMsgModal("秒数值应该在0~60")
+                event.preventDefault()
+                return
+            }
+
+            var sleepTime = parseInt($("#hourInput").val()) * 3600 + parseInt($("#minuteInput").val()) * 60 + parseInt($("#secondInput").val())
+            console.log(sleepTime)
+            $.post("/setCrawlInterval", {
+                "crawlInterval": sleepTime
+            }, function (resp) {
+                showMsgModal(resp)
+            })
+            event.preventDefault()
+        })
+    }
+
+    $(document).ready(function () {
+        if (msg != null && msg.length > 0) {
+            $("#msgModal").modal()
+        }
+        configTime()
+
+        var editor = $.cookie("editor")
+        var selected = (editor && editor == "treema") ? $(".radio-img img").eq(0) : $(".radio-img img").eq(1)
+        selected.siblings().removeClass("selected")
+        selected.addClass("selected")
+        $(".radio-img img").click(function () {
+            $(this).siblings().removeClass("selected")
+            $(this).addClass("selected")
+            $.cookie("editor", $(this).data('editor'))
+        })
+    })
+</script>
+</body>
+</html>

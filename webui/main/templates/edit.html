@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>可视化爬虫系统[编辑]</title>
+    <link href="/static/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/lib/buttons.css" rel="stylesheet">
+    <link href="/static/lib/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="/static/lib/treema/css/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+    <link href="/static/lib/treema/css/treema.css" rel="stylesheet">
+    {#    <link rel="stylesheet" href="/static/base.css">#}
+    <link href="/static/templatemo-style.css" rel="stylesheet">
+    <link href="/static/base.css" rel="stylesheet">
+    {#jquery必须用1.8，否则treema会报错。界面虽然不报错，但是运行时报错#}
+    <script src="/static/lib/treema/js/vendor/jquery-1.8.1.min.js"></script>
+    <script src="/static/lib/jquery.cookie.min.js"></script>
+    {#    <script src="https://cdn.bootcss.com/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>#}
+    {#    <script src="/static/lib/jquery-migrate.min.js"></script>#}
+    <script src="/static/lib/vue.min.js"></script>
+    <script src="/static/lib/popper.min.js"></script>
+    <script src="/static/lib/bootstrap.min.js"></script>
+    {#    <script src="https://cdn.bootcss.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}
+    <script src="/static/lib/bootstrap-switch.min.js"></script>
+    <script src="/static/lib/bootstrap-filestyle.min.js"></script>
+
+    <script src="/static/lib/treema/js/vendor/jquery-ui-1.10.3.custom.js"></script>
+    <script src="/static/lib/treema/js/vendor/tv4.js"></script>
+    <script src="/static/lib/treema/js/vendor/ace.js"></script>
+    <script src="/static/lib/treema/js/treema.js"></script>
+    <script src="/static/base.js"></script>
+    <script src="/static/templatemo-script.js"></script>
+    <script src="/static/crawler-schema.js"></script>
+    <script src="/static/lib/clone.min.js"></script>
+    <script src="/static/edit.js"></script>
+
+    <style>
+        #filenameInput {
+            font-size: 20px;
+            border-width: 0px;
+        }
+    </style>
+</head>
+<body>
+
+{#消息模态框#}
+
+<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    消息提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit"
+                        class="btn btn-block btn-rounded btn-danger button-large"
+                        data-dismiss="modal">
+                    我知道了
+                </button>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!-- Left column -->
+<div class="templatemo-flex-row">
+    <div class="templatemo-sidebar  {{ sideCollapse }}">
+        <div id="sidebar-collapse-button">
+            <span class="fa fa-bars fa-2x"></span>
+        </div>
+        <header class="templatemo-site-header">
+            <div class="square"></div>
+            <h1>可视化爬虫系统</h1>
+        </header>
+        <div class="profile-photo-container">
+            <img src="/static/images/gerapy.png" alt="Profile Photo" class="img-responsive">
+            <div class="profile-photo-overlay"></div>
+        </div>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">
+            <ul>
+                <li><a href="/manage"><i class="fa fa-home fa-2x"></i><span>新闻爬虫</span></a></li>
+                <li><a href="weibo"><i class="fa fa-newspaper-o fa-2x"></i><span>微博爬虫</span></a></li>
+                <li><a href="/config"><i class="fa fa-gear fa-2x"></i><span>系统设置</span></a></li>
+                <li><a href="#" class="active"><i class="fa fa-edit fa-2x"></i><span>编辑JSON</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Main content -->
+    <div class="templatemo-content col-1 light-gray-bg">
+        <div class="templatemo-top-nav-container">
+            <div class="row">
+                <input id="filenameInput">
+                <!--向右对齐-->
+                <button id="saveButton" class="btn btn-primary navbar-right">
+                    保存更改
+                </button>
+            </div>
+        </div>
+
+        <div class="templatemo-content-container">
+            <div class="flex-content-row">
+                <p>您可以使用退格键、方向键、Enter键、Tab键快速编辑，点击导航栏中文件名可以更改文件名</p>
+            </div>
+            <div class="templatemo-flex-row flex-content-row">
+
+                <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+                    <div id="content">
+                    </div>
+                </div>
+            </div> <!-- Second row ends -->
+            <footer class="text-right">
+                <p>Copyright &copy; 2017 BUAA</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var global = {
+        originalData: null,
+        filename: "{{ filename }}",
+        treema: null,
+        msg: "{{ msg }}"
+    };
+
+
+    $(document).ready(function () {
+        loadConfigJson(global.filename, function (resp) {
+            global.treema = buildTreemaExample($('#content'), crawlerSchema, resp);
+            global.originalData = JSON.stringify(global.treema.data)
+        })
+        $("#filenameInput").val(global.filename)
+        showMsgModal(global.msg)
+
+        window.onbeforeunload = function () {
+            if (global.originalData != JSON.stringify(global.treema.data)) {
+                return true
+            }
+        }
+
+        $("#saveButton").click(function () {
+            saveJSON(global, $("#filenameInput").val(), JSON.stringify(global.treema.data))
+        })
+    })
+
+</script>
+</body>
+</html>

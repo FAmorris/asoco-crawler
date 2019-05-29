@@ -1,0 +1,166 @@
+{
+  "spider_name": "universal",
+  "description": "腾讯新闻",
+  "type": "新闻",
+  "index": "http://www.qq.com/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    },
+    "DEFAULT_REQUEST_HEADERS": {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://news.qq.com/articleList/rolls"
+    ],
+    "splash": {
+      "enable": true,
+      "args": {
+        "wait": 2
+      }
+    }
+  },
+  "splash": {
+    "auth": {
+      "user": "admin",
+      "password": "admin"
+    }
+  },
+  "allowed_domains": [
+    "news.qq.com"
+  ],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='//ul[@class=\"titMode\"]//a'), callback='parse_item',process_request='splash_request')]",
+  "item": {
+    "class": "NewsItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='qq_article']/div[@class='hd']/h1/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='qq_bar clearfix']/div[@class='a_Info']/span[@class='a_time']/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "strip"
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='qq_bar clearfix']/div[@class='a_Info']/span[@class='a_source']/a/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "source_url": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='qq_bar clearfix']/div[@class='a_Info']/span[@class='a_source']/a/@href"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "hot": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "#Cnt-Main-Article-QQ p::text"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "腾讯新闻"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

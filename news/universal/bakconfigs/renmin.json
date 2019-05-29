@@ -1,0 +1,173 @@
+{
+  "spider_name": "universal",
+  "description": "人民网",
+  "type": "新闻",
+  "index": "http://www.people.com.cn/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://news.people.com.cn/"
+    ],
+    "splash": {
+      "enable": true,
+      "args": {
+        "wait": 2
+      }
+    }
+  },
+  "splash": {
+    "auth": {
+      "user": "admin",
+      "password": "admin"
+    }
+  },
+  "allowed_domains": [],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='//ul[@class=\"clearfix\"]//a'), callback='parse_item')]",
+  "item": {
+    "class": "NewsItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='clearfix w1000_320 text_title']/h1/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='clearfix w1000_320 text_title']/div[@class='box01']/div[@class='fl']/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "strip"
+        },
+        {
+          "method": "strip",
+          "args": [
+            "来源："
+          ]
+        },
+        {
+          "method": "strip",
+          "args": [
+            "&nbsp"
+          ]
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y年%m月%d日%H:%M",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='clearfix w1000_320 text_title']/div[@class='box01']/div[@class='fl']/a/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "source_url": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='clearfix w1000_320 text_title']/div[@class='box01']/div[@class='fl']/a/@href"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "hot": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "#rwb_zw p::text"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "人民网新闻"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "arch": "x86_64",
+  "auth": null,
+  "build": "h2379b0c_2",
+  "build_number": 2,
+  "channel": "https://repo.continuum.io/pkgs/main/win-64",
+  "depends": [
+    "vs2015_runtime >=14.0.25123,<15.0a0"
+  ],
+  "files": [],
+  "fn": "vc-14-h2379b0c_2.tar.bz2",
+  "license": "Modified BSD License (3-clause)",
+  "license_family": "BSD",
+  "link": {
+    "source": "D:\\apache\\miniconda\\pkgs\\vc-14-h2379b0c_2",
+    "type": 1
+  },
+  "md5": "f68ab579ccb9578a8a3a8c327587873e",
+  "name": "vc",
+  "noarch": null,
+  "platform": "win32",
+  "preferred_env": null,
+  "priority": 0,
+  "schannel": "defaults",
+  "size": 2831,
+  "subdir": "win-64",
+  "timestamp": 1508370899843,
+  "track_features": "vc14",
+  "url": "https://repo.continuum.io/pkgs/main/win-64/vc-14-h2379b0c_2.tar.bz2",
+  "version": "14",
+  "with_features_depends": {}
+}

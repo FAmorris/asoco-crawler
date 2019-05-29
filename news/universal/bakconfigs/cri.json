@@ -1,0 +1,159 @@
+{
+  "spider_name": "universal",
+  "description": "国际在线",
+  "type": "新闻",
+  "index": "http://news.cri.cn/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://news.cri.cn/roll",
+      "http://news.cri.cn/roll-2",
+      "http://news.cri.cn/roll-3",
+      "http://news.cri.cn/roll-4",
+      "http://news.cri.cn/roll-5",
+      "http://news.cri.cn/roll-6",
+      "http://news.cri.cn/roll-7",
+      "http://news.cri.cn/roll-8",
+      "http://news.cri.cn/roll-9",
+      "http://news.cri.cn/roll-10"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+  ],
+  "rules": "[Rule(LinkExtractor(allow='(\\d){8}/.*.html', restrict_xpaths='//div[@class=\"list-box\"]//a'), callback='parse_item')]",
+  "item": {
+    "class": "NewsItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "#goTop::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "css",
+          "args": [
+            "#acreatedtime::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M:%S",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "xpath",
+          "args": [
+            "//span[@id='asource']/a/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "source_url": [
+        {
+          "method": "xpath",
+          "args": [
+            "//span[@id='asource']/a/@href"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "hot": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "#abody p::text"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "国际在线"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

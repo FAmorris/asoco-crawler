@@ -1,0 +1,65 @@
+/*#content {*/
+/*box-shadow: 0 0 6px;*/
+/*margin: 0 auto;*/
+/*width: 800px;*/
+/*background: white;*/
+/*padding: 20px;*/
+/*}*/
+
+.treema-wrapper h1 {
+    border-radius: 3px;
+    padding: 15px 10px;
+    background: #0b97c4;
+
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    margin-bottom: 0px;
+}
+
+.treema-wrapper .nav {
+    padding: 0 5px;
+    margin-top: 5px;
+}
+
+.treema-wrapper h3 {
+    margin-top: 40px;
+}
+
+.treema-wrapper h4 {
+    margin: 20px 0;
+}
+
+.treema-wrapper li {
+    margin: 4px 0;
+}
+
+/* Demos */
+
+.treema-wrapper .tab-pane {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    box-shadow: 0 0 10px #aaa;
+}
+
+.treema-wrapper .nav-tabs li {
+    z-index: 1;
+}
+
+.treema-wrapper pre.tab-pane {
+    border: 0;
+}
+
+.treema-wrapper pre {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.treema-wrapper .treema-node {
+    font-size: 20px;
+}
+
+.treema-wrapper .treema-edit {
+    font-size: 20px;
+}

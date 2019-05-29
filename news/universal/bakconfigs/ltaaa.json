@@ -1,0 +1,136 @@
+{
+  "spider_name": "universal",
+  "description": "龙腾网",
+  "type": "论坛",
+  "index": "http://www.ltaaa.com",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 301
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://www.ltaaa.com/bbs/forum-53-1.html"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+    "www.ltaaa.com"
+  ],
+  "rules": "[Rule(LinkExtractor(allow='bbs/forum-53-[0-9]?.html',restrict_xpaths='//div[@class=\"pg\"]/a[contains(., \"下一页\")]'),follow = True),Rule(LinkExtractor(allow='bbs/thread-[0-9]+?-[0-9]+?-[0-9]+?.html',restrict_xpaths='//table[@id=\"threadlisttableid\"]//td[@class=\"icn\"]//a'),callback='parse_item')]",
+  "item": {
+    "class": "PostItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "title::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@id = \"wp\"]//div[@id = \"ct\"]//div[@id = \"postlist\"]//div//em[contains(.,\"发表于\")]/span/@title"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "hits": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@id = \"postlist\"]//div[@class = \"hm ptn\"]//span[@class = \"xi1\"]/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "replies": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@id = \"postlist\"]//div[@class = \"hm ptn\"]//span[@class = \"xi1\"][2]/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "hot": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@id = \"wp\"]//div[@id = \"ct\"]//div[@id = \"postlist\"]/div[1]//div[@class=\"t_fsz\"]//td[@class=\"t_f\"]//*[1]/following-sibling::*//text()"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "龙腾网"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class=\"pi\"]/div[@class=\"authi\"]/a/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ]
+    }
+  }
+}

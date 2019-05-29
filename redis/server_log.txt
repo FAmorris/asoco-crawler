@@ -1,0 +1,459 @@
+[6640] 21 Dec 21:06:14.335 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 6640 ready to start.
+[6640] 21 Dec 21:06:14.336 # Server started, Redis version 3.2.100
+[6640] 21 Dec 21:06:14.337 * The server is now ready to accept connections on port 6379
+[6640] 21 Dec 21:11:21.943 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:11:22.019 * Background saving started by pid 7632
+[6640] 21 Dec 21:11:22.461 # fork operation complete
+[6640] 21 Dec 21:11:22.467 * Background saving terminated with success
+[6640] 21 Dec 21:16:23.001 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:16:23.011 * Background saving started by pid 8740
+[6640] 21 Dec 21:16:24.511 # fork operation complete
+[6640] 21 Dec 21:16:24.512 * Background saving terminated with success
+[6640] 21 Dec 21:21:25.061 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:21:25.072 * Background saving started by pid 7420
+[6640] 21 Dec 21:21:25.472 # fork operation complete
+[6640] 21 Dec 21:21:25.472 * Background saving terminated with success
+[6640] 21 Dec 21:26:26.000 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:26:26.010 * Background saving started by pid 1660
+[6640] 21 Dec 21:26:26.611 # fork operation complete
+[6640] 21 Dec 21:26:26.611 * Background saving terminated with success
+[6640] 21 Dec 21:31:27.001 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:31:27.011 * Background saving started by pid 7188
+[6640] 21 Dec 21:31:27.211 # fork operation complete
+[6640] 21 Dec 21:31:27.211 * Background saving terminated with success
+[6640] 21 Dec 21:36:28.032 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:36:28.042 * Background saving started by pid 9108
+[6640] 21 Dec 21:36:28.442 # fork operation complete
+[6640] 21 Dec 21:36:28.442 * Background saving terminated with success
+[6640] 21 Dec 21:41:29.074 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:41:29.085 * Background saving started by pid 9144
+[6640] 21 Dec 21:41:29.885 # fork operation complete
+[6640] 21 Dec 21:41:29.885 * Background saving terminated with success
+[6640] 21 Dec 21:46:30.018 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:46:30.028 * Background saving started by pid 7572
+[6640] 21 Dec 21:46:30.529 # fork operation complete
+[6640] 21 Dec 21:46:30.529 * Background saving terminated with success
+[6640] 21 Dec 21:51:31.051 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:51:31.061 * Background saving started by pid 9008
+[6640] 21 Dec 21:51:31.462 # fork operation complete
+[6640] 21 Dec 21:51:31.462 * Background saving terminated with success
+[6640] 21 Dec 21:56:32.098 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 21:56:32.108 * Background saving started by pid 9008
+[6640] 21 Dec 21:56:32.308 # fork operation complete
+[6640] 21 Dec 21:56:32.308 * Background saving terminated with success
+[6640] 21 Dec 22:01:33.069 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 22:01:33.079 * Background saving started by pid 8708
+[6640] 21 Dec 22:01:33.280 # fork operation complete
+[6640] 21 Dec 22:01:33.280 * Background saving terminated with success
+[6640] 21 Dec 22:06:34.098 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 22:06:34.108 * Background saving started by pid 3056
+[6640] 21 Dec 22:06:34.308 # fork operation complete
+[6640] 21 Dec 22:06:34.308 * Background saving terminated with success
+[6640] 21 Dec 22:33:58.510 * 1 changes in 900 seconds. Saving...
+[6640] 21 Dec 22:33:58.640 * Background saving started by pid 5788
+[6640] 21 Dec 22:34:05.835 # fork operation complete
+[6640] 21 Dec 22:34:07.363 * Background saving terminated with success
+[6640] 21 Dec 22:42:52.305 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 22:42:52.305 * Background saving started by pid 6284
+[6640] 21 Dec 22:42:52.523 # fork operation complete
+[6640] 21 Dec 22:42:52.523 * Background saving terminated with success
+[6640] 21 Dec 23:00:29.500 * 1 changes in 900 seconds. Saving...
+[6640] 21 Dec 23:00:29.578 * Background saving started by pid 7868
+[6640] 21 Dec 23:00:33.651 # fork operation complete
+[6640] 21 Dec 23:00:33.651 * Background saving terminated with success
+[6640] 21 Dec 23:05:34.091 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 23:05:34.102 * Background saving started by pid 4372
+[6640] 21 Dec 23:05:34.402 # fork operation complete
+[6640] 21 Dec 23:05:34.403 * Background saving terminated with success
+[6640] 21 Dec 23:10:35.031 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 23:10:35.041 * Background saving started by pid 8868
+[6640] 21 Dec 23:10:35.441 # fork operation complete
+[6640] 21 Dec 23:10:35.441 * Background saving terminated with success
+[6640] 21 Dec 23:15:36.041 * 10 changes in 300 seconds. Saving...
+[6640] 21 Dec 23:15:36.052 * Background saving started by pid 8168
+[6640] 21 Dec 23:15:36.354 # fork operation complete
+[6640] 21 Dec 23:15:36.354 * Background saving terminated with success
+[4008] 22 Dec 09:17:59.813 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 4008 ready to start.
+[4008] 22 Dec 09:17:59.866 # Server started, Redis version 3.2.100
+[4008] 22 Dec 09:17:59.970 * DB loaded from disk: 0.104 seconds
+[4008] 22 Dec 09:17:59.971 * The server is now ready to accept connections on port 6379
+[3460] 22 Dec 15:01:48.775 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3460 ready to start.
+[3460] 22 Dec 15:01:48.869 # Server started, Redis version 3.2.100
+[3460] 22 Dec 15:01:48.900 * DB loaded from disk: 0.031 seconds
+[3460] 22 Dec 15:01:48.900 * The server is now ready to accept connections on port 6379
+[3676] 23 Dec 22:17:42.144 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3676 ready to start.
+[3676] 23 Dec 22:17:42.145 # Server started, Redis version 3.2.100
+[3676] 23 Dec 22:17:42.145 * DB loaded from disk: 0.000 seconds
+[3676] 23 Dec 22:17:42.146 * The server is now ready to accept connections on port 6379
+[1256] 24 Dec 19:17:15.053 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 1256 ready to start.
+[1256] 24 Dec 19:17:15.054 # Server started, Redis version 3.2.100
+[1256] 24 Dec 19:17:15.055 * DB loaded from disk: 0.001 seconds
+[1256] 24 Dec 19:17:15.055 * The server is now ready to accept connections on port 6379
+[1256] 24 Dec 20:52:25.283 * 1 changes in 900 seconds. Saving...
+[1256] 24 Dec 20:52:25.440 * Background saving started by pid 6764
+[1256] 24 Dec 20:52:25.740 # fork operation complete
+[1256] 24 Dec 20:52:25.740 * Background saving terminated with success
+[1256] 24 Dec 20:57:26.077 * 10 changes in 300 seconds. Saving...
+[1256] 24 Dec 20:57:26.089 * Background saving started by pid 3576
+[1256] 24 Dec 20:57:26.289 # fork operation complete
+[1256] 24 Dec 20:57:26.289 * Background saving terminated with success
+[1256] 24 Dec 21:02:27.050 * 10 changes in 300 seconds. Saving...
+[1256] 24 Dec 21:02:27.061 * Background saving started by pid 8960
+[1256] 24 Dec 21:02:27.361 # fork operation complete
+[1256] 24 Dec 21:02:27.361 * Background saving terminated with success
+[1256] 24 Dec 21:16:42.043 * 10 changes in 300 seconds. Saving...
+[1256] 24 Dec 21:16:42.061 * Background saving started by pid 10140
+[1256] 24 Dec 21:16:42.562 # fork operation complete
+[1256] 24 Dec 21:16:42.562 * Background saving terminated with success
+[1256] 24 Dec 21:31:43.038 * 1 changes in 900 seconds. Saving...
+[1256] 24 Dec 21:31:43.100 * Background saving started by pid 3112
+[1256] 24 Dec 21:31:43.501 # fork operation complete
+[1256] 24 Dec 21:31:43.501 * Background saving terminated with success
+[1720] 25 Dec 08:45:09.098 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 1720 ready to start.
+[1720] 25 Dec 08:45:09.347 # Server started, Redis version 3.2.100
+[1720] 25 Dec 08:45:09.425 * DB loaded from disk: 0.078 seconds
+[1720] 25 Dec 08:45:09.441 * The server is now ready to accept connections on port 6379
+[1720] 25 Dec 16:15:43.256 * 1 changes in 900 seconds. Saving...
+[1720] 25 Dec 16:15:43.740 * Background saving started by pid 9112
+[1720] 25 Dec 16:15:44.724 # fork operation complete
+[1720] 25 Dec 16:15:44.990 * Background saving terminated with success
+[1720] 25 Dec 16:29:22.839 * 10 changes in 300 seconds. Saving...
+[1720] 25 Dec 16:29:22.839 * Background saving started by pid 6628
+[1720] 25 Dec 16:29:23.385 # fork operation complete
+[1720] 25 Dec 16:29:23.385 * Background saving terminated with success
+[1720] 25 Dec 16:43:30.318 * 10 changes in 300 seconds. Saving...
+[1720] 25 Dec 16:43:30.318 * Background saving started by pid 5568
+[1720] 25 Dec 16:43:30.644 # fork operation complete
+[1720] 25 Dec 16:43:30.644 * Background saving terminated with success
+[1720] 25 Dec 16:58:31.066 * 1 changes in 900 seconds. Saving...
+[1720] 25 Dec 16:58:31.066 * Background saving started by pid 4672
+[1720] 25 Dec 16:58:31.394 # fork operation complete
+[1720] 25 Dec 16:58:31.394 * Background saving terminated with success
+[3140] 25 Dec 19:52:24.791 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3140 ready to start.
+[3140] 25 Dec 19:52:24.807 # Server started, Redis version 3.2.100
+[3140] 25 Dec 19:52:24.822 * DB loaded from disk: 0.016 seconds
+[3140] 25 Dec 19:52:24.822 * The server is now ready to accept connections on port 6379
+[3744] 26 Dec 08:38:33.336 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3744 ready to start.
+[3744] 26 Dec 08:38:33.336 # Server started, Redis version 3.2.100
+[3744] 26 Dec 08:38:33.336 * DB loaded from disk: 0.000 seconds
+[3744] 26 Dec 08:38:33.336 * The server is now ready to accept connections on port 6379
+[3632] 26 Dec 18:26:38.344 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3632 ready to start.
+[3632] 26 Dec 18:26:38.344 # Server started, Redis version 3.2.100
+[3632] 26 Dec 18:26:38.345 * DB loaded from disk: 0.000 seconds
+[3632] 26 Dec 18:26:38.345 * The server is now ready to accept connections on port 6379
+[4080] 26 Dec 19:11:44.766 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 4080 ready to start.
+[4080] 26 Dec 19:11:44.766 # Server started, Redis version 3.2.100
+[4080] 26 Dec 19:11:44.766 * DB loaded from disk: 0.000 seconds
+[4080] 26 Dec 19:11:44.766 * The server is now ready to accept connections on port 6379
+[3648] 27 Dec 08:43:19.196 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3648 ready to start.
+[3648] 27 Dec 08:43:19.197 # Server started, Redis version 3.2.100
+[3648] 27 Dec 08:43:19.197 * DB loaded from disk: 0.000 seconds
+[3648] 27 Dec 08:43:19.197 * The server is now ready to accept connections on port 6379
+[4172] 27 Dec 20:47:21.028 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 4172 ready to start.
+[4172] 27 Dec 20:47:21.029 # Server started, Redis version 3.2.100
+[4172] 27 Dec 20:47:21.029 * DB loaded from disk: 0.000 seconds
+[4172] 27 Dec 20:47:21.030 * The server is now ready to accept connections on port 6379
+[4376] 28 Dec 08:51:00.827 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 4376 ready to start.
+[4376] 28 Dec 08:51:00.828 # Server started, Redis version 3.2.100
+[4376] 28 Dec 08:51:00.829 * DB loaded from disk: 0.000 seconds
+[4376] 28 Dec 08:51:00.829 * The server is now ready to accept connections on port 6379
+[3728] 28 Dec 19:36:57.455 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3728 ready to start.
+[3728] 28 Dec 19:36:57.493 # Server started, Redis version 3.2.100
+[3728] 28 Dec 19:36:57.708 * DB loaded from disk: 0.213 seconds
+[3728] 28 Dec 19:36:57.709 * The server is now ready to accept connections on port 6379
+[3056] 29 Dec 08:49:36.273 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3056 ready to start.
+[3056] 29 Dec 08:49:36.460 # Server started, Redis version 3.2.100
+[3056] 29 Dec 08:49:37.037 * DB loaded from disk: 0.577 seconds
+[3056] 29 Dec 08:49:37.037 * The server is now ready to accept connections on port 6379
+[1280] 29 Dec 14:30:53.387 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 1280 ready to start.
+[1280] 29 Dec 14:30:53.472 # Server started, Redis version 3.2.100
+[1280] 29 Dec 14:30:53.509 * DB loaded from disk: 0.036 seconds
+[1280] 29 Dec 14:30:53.510 * The server is now ready to accept connections on port 6379
+[1780] 30 Dec 10:01:35.074 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 1780 ready to start.
+[1780] 30 Dec 10:01:35.620 # Server started, Redis version 3.2.100
+[1780] 30 Dec 10:01:36.073 * DB loaded from disk: 0.452 seconds
+[1780] 30 Dec 10:01:36.073 * The server is now ready to accept connections on port 6379
+[3388] 30 Dec 13:56:03.662 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3388 ready to start.
+[3388] 30 Dec 13:56:03.763 # Server started, Redis version 3.2.100
+[3388] 30 Dec 13:56:04.139 * DB loaded from disk: 0.375 seconds
+[3388] 30 Dec 13:56:04.140 * The server is now ready to accept connections on port 6379
+[3272] 30 Dec 18:58:00.518 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3272 ready to start.
+[3272] 30 Dec 18:58:00.534 # Server started, Redis version 3.2.100
+[3272] 30 Dec 18:58:00.534 * DB loaded from disk: 0.000 seconds
+[3272] 30 Dec 18:58:00.534 * The server is now ready to accept connections on port 6379
+[3568] 31 Dec 09:13:49.210 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3568 ready to start.
+[3568] 31 Dec 09:13:49.211 # Server started, Redis version 3.2.100
+[3568] 31 Dec 09:13:49.211 * DB loaded from disk: 0.000 seconds
+[3568] 31 Dec 09:13:49.212 * The server is now ready to accept connections on port 6379
+[3532] 01 Jan 08:38:01.791 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3532 ready to start.
+[3532] 01 Jan 08:38:01.925 # Server started, Redis version 3.2.100
+[3532] 01 Jan 08:38:02.013 * DB loaded from disk: 0.088 seconds
+[3532] 01 Jan 08:38:02.013 * The server is now ready to accept connections on port 6379
+[3544] 01 Jan 15:31:30.522 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3544 ready to start.
+[3544] 01 Jan 15:31:30.612 # Server started, Redis version 3.2.100
+[3544] 01 Jan 15:31:30.655 * DB loaded from disk: 0.043 seconds
+[3544] 01 Jan 15:31:30.656 * The server is now ready to accept connections on port 6379
+[3768] 02 Jan 08:33:47.785 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3768 ready to start.
+[3768] 02 Jan 08:33:47.808 # Server started, Redis version 3.2.100
+[3768] 02 Jan 08:33:48.528 * DB loaded from disk: 0.720 seconds
+[3768] 02 Jan 08:33:48.529 * The server is now ready to accept connections on port 6379
+[3836] 02 Jan 19:05:02.231 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3836 ready to start.
+[3836] 02 Jan 19:05:02.387 # Server started, Redis version 3.2.100
+[3836] 02 Jan 19:05:02.507 * DB loaded from disk: 0.119 seconds
+[3836] 02 Jan 19:05:02.508 * The server is now ready to accept connections on port 6379
+[3544] 03 Jan 18:30:06.348 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3544 ready to start.
+[3544] 03 Jan 18:30:06.427 # Server started, Redis version 3.2.100
+[3544] 03 Jan 18:30:06.460 * DB loaded from disk: 0.033 seconds
+[3544] 03 Jan 18:30:06.460 * The server is now ready to accept connections on port 6379
+[2572] 04 Jan 10:54:37.003 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 2572 ready to start.
+[2572] 04 Jan 10:54:37.026 # Server started, Redis version 3.2.100
+[2572] 04 Jan 10:54:37.114 * DB loaded from disk: 0.087 seconds
+[2572] 04 Jan 10:54:37.115 * The server is now ready to accept connections on port 6379
+[3668] 04 Jan 15:03:59.145 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3668 ready to start.
+[3668] 04 Jan 15:03:59.324 # Server started, Redis version 3.2.100
+[3668] 04 Jan 15:04:00.444 * DB loaded from disk: 1.119 seconds
+[3668] 04 Jan 15:04:00.445 * The server is now ready to accept connections on port 6379
+[3668] 04 Jan 17:06:30.084 * 1 changes in 900 seconds. Saving...
+[3668] 04 Jan 17:06:30.303 * Background saving started by pid 2160
+[3668] 04 Jan 17:06:30.630 # fork operation complete
+[3668] 04 Jan 17:06:30.661 * Background saving terminated with success
+[3624] 04 Jan 21:20:58.516 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3624 ready to start.
+[3624] 04 Jan 21:20:58.673 # Server started, Redis version 3.2.100
+[3624] 04 Jan 21:20:58.703 * DB loaded from disk: 0.030 seconds
+[3624] 04 Jan 21:20:58.703 * The server is now ready to accept connections on port 6379
+[2848] 05 Jan 10:22:58.415 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 2848 ready to start.
+[2848] 05 Jan 10:22:58.465 # Server started, Redis version 3.2.100
+[2848] 05 Jan 10:22:58.491 * DB loaded from disk: 0.026 seconds
+[2848] 05 Jan 10:22:58.492 * The server is now ready to accept connections on port 6379
+[2848] 05 Jan 13:00:01.024 * 1 changes in 900 seconds. Saving...
+[2848] 05 Jan 13:00:01.882 * Background saving started by pid 6688
+[2848] 05 Jan 13:00:02.867 # fork operation complete
+[2848] 05 Jan 13:00:02.882 * Background saving terminated with success
+[3120] 05 Jan 17:06:02.114 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3120 ready to start.
+[3120] 05 Jan 17:06:02.141 # Server started, Redis version 3.2.100
+[3120] 05 Jan 17:06:02.190 * DB loaded from disk: 0.049 seconds
+[3120] 05 Jan 17:06:02.191 * The server is now ready to accept connections on port 6379
+[3556] 06 Jan 09:12:54.024 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3556 ready to start.
+[3556] 06 Jan 09:12:54.130 # Server started, Redis version 3.2.100
+[3556] 06 Jan 09:12:54.236 * DB loaded from disk: 0.105 seconds
+[3556] 06 Jan 09:12:54.236 * The server is now ready to accept connections on port 6379
+[2484] 06 Jan 15:43:18.250 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 2484 ready to start.
+[2484] 06 Jan 15:43:18.519 # Server started, Redis version 3.2.100
+[2484] 06 Jan 15:43:18.558 * DB loaded from disk: 0.039 seconds
+[2484] 06 Jan 15:43:18.558 * The server is now ready to accept connections on port 6379
+[2484] 06 Jan 16:28:47.854 * 1 changes in 900 seconds. Saving...
+[2484] 06 Jan 16:28:47.854 * Background saving started by pid 2260
+[2484] 06 Jan 16:28:48.510 # fork operation complete
+[2484] 06 Jan 16:28:48.510 * Background saving terminated with success
+[2484] 06 Jan 16:37:12.754 * 10 changes in 300 seconds. Saving...
+[2484] 06 Jan 16:37:12.754 * Background saving started by pid 7760
+[2484] 06 Jan 16:37:13.085 # fork operation complete
+[2484] 06 Jan 16:37:13.085 * Background saving terminated with success
+[2484] 06 Jan 16:52:14.081 * 1 changes in 900 seconds. Saving...
+[2484] 06 Jan 16:52:14.081 * Background saving started by pid 5348
+[2484] 06 Jan 16:52:14.300 # fork operation complete
+[2484] 06 Jan 16:52:14.300 * Background saving terminated with success
+[3332] 07 Jan 08:43:51.035 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3332 ready to start.
+[3332] 07 Jan 08:43:51.883 # Server started, Redis version 3.2.100
+[3332] 07 Jan 08:43:52.292 * DB loaded from disk: 0.408 seconds
+[3332] 07 Jan 08:43:52.293 * The server is now ready to accept connections on port 6379
+[3520] 07 Jan 15:14:24.423 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3520 ready to start.
+[3520] 07 Jan 15:14:24.466 # Server started, Redis version 3.2.100
+[3520] 07 Jan 15:14:24.499 * DB loaded from disk: 0.032 seconds
+[3520] 07 Jan 15:14:24.500 * The server is now ready to accept connections on port 6379
+[3704] 07 Jan 19:56:55.290 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3704 ready to start.
+[3704] 07 Jan 19:56:55.344 # Server started, Redis version 3.2.100
+[3704] 07 Jan 19:56:55.399 * DB loaded from disk: 0.054 seconds
+[3704] 07 Jan 19:56:55.400 * The server is now ready to accept connections on port 6379
+[3704] 07 Jan 20:15:29.749 * 1 changes in 900 seconds. Saving...
+[3704] 07 Jan 20:15:29.760 * Background saving started by pid 7408
+[3704] 07 Jan 20:15:29.961 # fork operation complete
+[3704] 07 Jan 20:15:29.961 * Background saving terminated with success
+[3704] 07 Jan 20:30:30.086 * 1 changes in 900 seconds. Saving...
+[3704] 07 Jan 20:30:30.086 * Background saving started by pid 3336
+[3704] 07 Jan 20:30:30.413 # fork operation complete
+[3704] 07 Jan 20:30:30.413 * Background saving terminated with success
+[3704] 07 Jan 20:45:31.016 * 1 changes in 900 seconds. Saving...
+[3704] 07 Jan 20:45:31.016 * Background saving started by pid 8056
+[3704] 07 Jan 20:45:31.234 # fork operation complete
+[3704] 07 Jan 20:45:31.234 * Background saving terminated with success
+[3260] 08 Jan 08:57:32.296 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3260 ready to start.
+[3260] 08 Jan 08:57:32.323 # Server started, Redis version 3.2.100
+[3260] 08 Jan 08:57:32.376 * DB loaded from disk: 0.052 seconds
+[3260] 08 Jan 08:57:32.376 * The server is now ready to accept connections on port 6379
+[3260] 08 Jan 09:24:54.704 * 1 changes in 900 seconds. Saving...
+[3260] 08 Jan 09:24:54.716 * Background saving started by pid 1172
+[3260] 08 Jan 09:24:55.416 # fork operation complete
+[3260] 08 Jan 09:24:55.416 * Background saving terminated with success
+[3260] 08 Jan 09:29:56.022 * 10 changes in 300 seconds. Saving...
+[3260] 08 Jan 09:29:56.029 * Background saving started by pid 3188
+[3260] 08 Jan 09:29:56.342 # fork operation complete
+[3260] 08 Jan 09:29:56.342 * Background saving terminated with success
+[3668] 08 Jan 21:29:21.161 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3668 ready to start.
+[3668] 08 Jan 21:29:21.289 # Server started, Redis version 3.2.100
+[3668] 08 Jan 21:29:24.068 * DB loaded from disk: 2.778 seconds
+[3668] 08 Jan 21:29:24.069 * The server is now ready to accept connections on port 6379
+[3652] 09 Jan 09:37:34.139 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3652 ready to start.
+[3652] 09 Jan 09:37:34.544 # Server started, Redis version 3.2.100
+[3652] 09 Jan 09:37:36.957 * DB loaded from disk: 2.412 seconds
+[3652] 09 Jan 09:37:36.958 * The server is now ready to accept connections on port 6379
+[3652] 09 Jan 09:44:39.043 * 10 changes in 300 seconds. Saving...
+[3652] 09 Jan 09:44:39.043 * Background saving started by pid 6000
+[3652] 09 Jan 09:44:39.479 # fork operation complete
+[3652] 09 Jan 09:44:39.479 * Background saving terminated with success
+[3652] 09 Jan 09:49:40.029 * 10 changes in 300 seconds. Saving...
+[3652] 09 Jan 09:49:40.040 * Background saving started by pid 6340
+[3652] 09 Jan 09:49:40.741 # fork operation complete
+[3652] 09 Jan 09:49:40.741 * Background saving terminated with success
+[3664] 09 Jan 15:54:09.197 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3664 ready to start.
+[3664] 09 Jan 15:54:09.313 # Server started, Redis version 3.2.100
+[3664] 09 Jan 15:54:10.179 * DB loaded from disk: 0.865 seconds
+[3664] 09 Jan 15:54:10.180 * The server is now ready to accept connections on port 6379
+[3664] 09 Jan 16:06:02.539 * 10 changes in 300 seconds. Saving...
+[3664] 09 Jan 16:06:02.539 * Background saving started by pid 2060
+[3664] 09 Jan 16:06:03.303 # fork operation complete
+[3664] 09 Jan 16:06:03.303 * Background saving terminated with success
+[3664] 09 Jan 16:11:04.019 * 10 changes in 300 seconds. Saving...
+[3664] 09 Jan 16:11:04.030 * Background saving started by pid 6996
+[3664] 09 Jan 16:11:04.430 # fork operation complete
+[3664] 09 Jan 16:11:04.430 * Background saving terminated with success
+[3664] 09 Jan 16:59:13.116 * 1 changes in 900 seconds. Saving...
+[3664] 09 Jan 16:59:13.116 * Background saving started by pid 4748
+[3664] 09 Jan 16:59:13.553 # fork operation complete
+[3664] 09 Jan 16:59:13.553 * Background saving terminated with success
+[3920] 09 Jan 21:53:05.862 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3920 ready to start.
+[3920] 09 Jan 21:53:05.874 # Server started, Redis version 3.2.100
+[3920] 09 Jan 21:53:05.982 * DB loaded from disk: 0.108 seconds
+[3920] 09 Jan 21:53:05.983 * The server is now ready to accept connections on port 6379
+[2992] 10 Jan 10:52:58.582 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 2992 ready to start.
+[2992] 10 Jan 10:52:58.753 # Server started, Redis version 3.2.100
+[2992] 10 Jan 10:52:59.097 * DB loaded from disk: 0.343 seconds
+[2992] 10 Jan 10:52:59.097 * The server is now ready to accept connections on port 6379
+[2212] 10 Jan 16:03:58.930 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 2212 ready to start.
+[2212] 10 Jan 16:03:59.035 # Server started, Redis version 3.2.100
+[2212] 10 Jan 16:03:59.409 * DB loaded from disk: 0.374 seconds
+[2212] 10 Jan 16:03:59.410 * The server is now ready to accept connections on port 6379
+[2892] 10 Jan 21:35:36.455 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 2892 ready to start.
+[2892] 10 Jan 21:35:36.580 # Server started, Redis version 3.2.100
+[2892] 10 Jan 21:35:37.001 * DB loaded from disk: 0.421 seconds
+[2892] 10 Jan 21:35:37.001 * The server is now ready to accept connections on port 6379
+[2892] 10 Jan 22:09:44.904 * 1 changes in 900 seconds. Saving...
+[2892] 10 Jan 22:09:44.920 * Background saving started by pid 3128
+[2892] 10 Jan 22:09:45.138 # fork operation complete
+[2892] 10 Jan 22:09:45.138 * Background saving terminated with success
+[2892] 10 Jan 22:14:46.028 * 10 changes in 300 seconds. Saving...
+[2892] 10 Jan 22:14:46.029 * Background saving started by pid 392
+[2892] 10 Jan 22:14:46.575 # fork operation complete
+[2892] 10 Jan 22:14:46.575 * Background saving terminated with success
+[2892] 10 Jan 22:53:14.675 * 1 changes in 900 seconds. Saving...
+[2892] 10 Jan 22:53:14.675 * Background saving started by pid 4556
+[2892] 10 Jan 22:53:14.895 # fork operation complete
+[2892] 10 Jan 22:53:14.895 * Background saving terminated with success
+[2892] 10 Jan 22:58:15.028 * 10 changes in 300 seconds. Saving...
+[2892] 10 Jan 22:58:15.028 * Background saving started by pid 7792
+[2892] 10 Jan 22:58:15.246 # fork operation complete
+[2892] 10 Jan 22:58:15.246 * Background saving terminated with success
+[2892] 10 Jan 23:13:16.072 * 1 changes in 900 seconds. Saving...
+[2892] 10 Jan 23:13:16.072 * Background saving started by pid 4876
+[2892] 10 Jan 23:13:16.399 # fork operation complete
+[2892] 10 Jan 23:13:16.399 * Background saving terminated with success
+[2892] 10 Jan 23:28:17.002 * 1 changes in 900 seconds. Saving...
+[2892] 10 Jan 23:28:17.012 * Background saving started by pid 6708
+[2892] 10 Jan 23:28:17.513 # fork operation complete
+[2892] 10 Jan 23:28:17.513 * Background saving terminated with success
+[2892] 10 Jan 23:43:18.088 * 1 changes in 900 seconds. Saving...
+[2892] 10 Jan 23:43:18.098 * Background saving started by pid 3916
+[2892] 10 Jan 23:43:18.498 # fork operation complete
+[2892] 10 Jan 23:43:18.498 * Background saving terminated with success
+[3444] 11 Jan 10:09:39.467 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3444 ready to start.
+[3444] 11 Jan 10:09:40.526 # Server started, Redis version 3.2.100
+[3444] 11 Jan 10:09:42.798 * DB loaded from disk: 2.272 seconds
+[3444] 11 Jan 10:09:42.799 * The server is now ready to accept connections on port 6379
+[3444] 11 Jan 10:27:05.954 * 1 changes in 900 seconds. Saving...
+[3444] 11 Jan 10:27:05.965 * Background saving started by pid 4928
+[3444] 11 Jan 10:27:06.267 # fork operation complete
+[3444] 11 Jan 10:27:06.267 * Background saving terminated with success
+[3444] 11 Jan 10:42:07.011 * 1 changes in 900 seconds. Saving...
+[3444] 11 Jan 10:42:07.021 * Background saving started by pid 6240
+[3444] 11 Jan 10:42:07.322 # fork operation complete
+[3444] 11 Jan 10:42:07.322 * Background saving terminated with success
+[3444] 11 Jan 10:57:08.083 * 1 changes in 900 seconds. Saving...
+[3444] 11 Jan 10:57:08.094 * Background saving started by pid 7424
+[3444] 11 Jan 10:57:08.294 # fork operation complete
+[3444] 11 Jan 10:57:08.294 * Background saving terminated with success
+[3664] 11 Jan 15:01:51.778 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3664 ready to start.
+[3664] 11 Jan 15:01:52.171 # Server started, Redis version 3.2.100
+[3664] 11 Jan 15:01:52.560 * DB loaded from disk: 0.388 seconds
+[3664] 11 Jan 15:01:52.560 * The server is now ready to accept connections on port 6379
+[3664] 11 Jan 15:37:12.022 * 1 changes in 900 seconds. Saving...
+[3664] 11 Jan 15:37:12.032 * Background saving started by pid 6688
+[3664] 11 Jan 15:37:12.333 # fork operation complete
+[3664] 11 Jan 15:37:12.333 * Background saving terminated with success
+[3664] 11 Jan 15:45:51.065 * 10 changes in 300 seconds. Saving...
+[3664] 11 Jan 15:45:51.075 * Background saving started by pid 6156
+[3664] 11 Jan 15:45:51.476 # fork operation complete
+[3664] 11 Jan 15:45:51.476 * Background saving terminated with success
+[3664] 11 Jan 15:58:23.219 * 10 changes in 300 seconds. Saving...
+[3664] 11 Jan 15:58:23.229 * Background saving started by pid 6172
+[3664] 11 Jan 15:58:23.429 # fork operation complete
+[3664] 11 Jan 15:58:23.429 * Background saving terminated with success
+[3664] 11 Jan 16:03:24.047 * 10 changes in 300 seconds. Saving...
+[3664] 11 Jan 16:03:24.058 * Background saving started by pid 1856
+[3664] 11 Jan 16:03:24.359 # fork operation complete
+[3664] 11 Jan 16:03:24.359 * Background saving terminated with success
+[3664] 11 Jan 16:21:41.729 * 1 changes in 900 seconds. Saving...
+[3664] 11 Jan 16:21:41.739 * Background saving started by pid 5044
+[3664] 11 Jan 16:21:41.941 # fork operation complete
+[3664] 11 Jan 16:21:41.941 * Background saving terminated with success
+[3664] 11 Jan 16:55:10.509 * 1 changes in 900 seconds. Saving...
+[3664] 11 Jan 16:55:10.539 * Background saving started by pid 7392
+[3664] 11 Jan 16:55:14.749 # fork operation complete
+[3664] 11 Jan 16:55:14.749 * Background saving terminated with success
+[3664] 11 Jan 17:00:15.069 * 10 changes in 300 seconds. Saving...
+[3664] 11 Jan 17:00:15.079 * Background saving started by pid 7632
+[3664] 11 Jan 17:00:15.380 # fork operation complete
+[3664] 11 Jan 17:00:15.380 * Background saving terminated with success
+[472] 11 Jan 17:52:11.929 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 472 ready to start.
+[472] 11 Jan 17:52:11.992 # Server started, Redis version 3.2.100
+[472] 11 Jan 17:52:12.257 * DB loaded from disk: 0.265 seconds
+[472] 11 Jan 17:52:12.257 * The server is now ready to accept connections on port 6379
+[472] 11 Jan 20:37:57.805 * 1 changes in 900 seconds. Saving...
+[472] 11 Jan 20:37:57.949 * Background saving started by pid 5836
+[472] 11 Jan 20:37:58.249 # fork operation complete
+[472] 11 Jan 20:37:58.249 * Background saving terminated with success
+[472] 11 Jan 20:42:59.070 * 10 changes in 300 seconds. Saving...
+[472] 11 Jan 20:42:59.080 * Background saving started by pid 7660
+[472] 11 Jan 20:42:59.581 # fork operation complete
+[472] 11 Jan 20:42:59.581 * Background saving terminated with success
+[3300] 12 Jan 09:39:37.932 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3300 ready to start.
+[3300] 12 Jan 09:39:37.964 # Server started, Redis version 3.2.100
+[3300] 12 Jan 09:39:39.298 * DB loaded from disk: 1.333 seconds
+[3300] 12 Jan 09:39:39.298 * The server is now ready to accept connections on port 6379
+[1952] 12 Jan 15:26:35.335 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 1952 ready to start.
+[1952] 12 Jan 15:26:35.412 # Server started, Redis version 3.2.100
+[1952] 12 Jan 15:26:35.565 * DB loaded from disk: 0.153 seconds
+[1952] 12 Jan 15:26:35.566 * The server is now ready to accept connections on port 6379
+[3040] 12 Jan 19:34:26.971 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3040 ready to start.
+[3040] 12 Jan 19:34:27.095 # Server started, Redis version 3.2.100
+[3040] 12 Jan 19:34:27.595 * DB loaded from disk: 0.499 seconds
+[3040] 12 Jan 19:34:27.595 * The server is now ready to accept connections on port 6379
+[3960] 12 Jan 21:43:37.932 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3960 ready to start.
+[3960] 12 Jan 21:43:38.041 # Server started, Redis version 3.2.100
+[3960] 12 Jan 21:43:38.447 * DB loaded from disk: 0.406 seconds
+[3960] 12 Jan 21:43:38.447 * The server is now ready to accept connections on port 6379
+[3780] 13 Jan 13:02:49.444 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3780 ready to start.
+[3780] 13 Jan 13:02:49.739 # Server started, Redis version 3.2.100
+[3780] 13 Jan 13:02:51.636 * DB loaded from disk: 1.895 seconds
+[3780] 13 Jan 13:02:51.636 * The server is now ready to accept connections on port 6379
+[3484] 13 Jan 16:19:41.842 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3484 ready to start.
+[3484] 13 Jan 16:19:41.874 # Server started, Redis version 3.2.100
+[3484] 13 Jan 16:19:42.279 * DB loaded from disk: 0.406 seconds
+[3484] 13 Jan 16:19:42.279 * The server is now ready to accept connections on port 6379
+[3932] 14 Jan 11:49:20.134 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 3932 ready to start.
+[3932] 14 Jan 11:49:20.245 # Server started, Redis version 3.2.100
+[3932] 14 Jan 11:49:20.575 * DB loaded from disk: 0.329 seconds
+[3932] 14 Jan 11:49:20.575 * The server is now ready to accept connections on port 6379
+[5400] 14 Jan 12:01:43.011 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 5400 ready to start.
+[5400] 14 Jan 12:01:43.011 # Server started, Redis version 3.2.100
+[5400] 14 Jan 12:01:43.011 * DB loaded from disk: 0.000 seconds
+[5400] 14 Jan 12:01:43.011 * The server is now ready to accept connections on port 6379

@@ -1,0 +1,227 @@
+{
+  "spider_name": "universal",
+  "description": "凯迪论坛",
+  "type": "论坛",
+  "index": "http://club.kdnet.net/list.asp?boardid=1&page=1",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://club.kdnet.net/list.asp?boardid=1&page=1",
+      "http://club.kdnet.net/list.asp?boardid=1&page=2",
+      "http://club.kdnet.net/list.asp?boardid=1&page=3",
+      "http://club.kdnet.net/list.asp?boardid=1&page=4",
+      "http://club.kdnet.net/list.asp?boardid=1&page=5",
+      "http://club.kdnet.net/list.asp?boardid=1&page=6",
+      "http://club.kdnet.net/list.asp?boardid=1&page=7",
+      "http://club.kdnet.net/list.asp?boardid=1&page=8",
+      "http://club.kdnet.net/list.asp?boardid=1&page=9",
+      "http://club.kdnet.net/list.asp?boardid=1&page=10",
+      "http://club.kdnet.net/list.asp?boardid=1&page=11",
+      "http://club.kdnet.net/list.asp?boardid=1&page=12"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+    "club.kdnet.net"
+  ],
+  "rules": "[Rule(LinkExtractor(restrict_css='tr.list-folder > td.table-title > a'), callback='parse_item')]",
+  "item": {
+    "class": "PostItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "div.postspecific > div.posts-title::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "title"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "css",
+          "args": [
+            "div.postspecific > div.posts-posted::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "publish_time2"
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "replace",
+          "args": [
+            " 于  ",
+            ""
+          ]
+        },
+        {
+          "method": "replace",
+          "args": [
+            " 发布在 ",
+            ""
+          ]
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y/%m/%d %H:%M:%S",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hot": [
+        {
+          "method": "css",
+          "args": [
+            "div.postspecific > div.posts-stat-box > div.posts-stat-c > div:nth-child(1) > span::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "hot"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "author": [
+        {
+          "method": "css",
+          "args": [
+            " div.postspecific > div.posts-posted > span:nth-child(1) > a::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "author"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "css",
+          "args": [
+            "div.postspecific > div.posts-stat-box > div.posts-stat-c > div:nth-child(2) > span::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "replies"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "css",
+          "args": [
+            "div.postspecific > div.posts-stat-box > div.posts-stat-c > div:nth-child(1) > span::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "hot"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "div.postspecific > div.posts-cont::text"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "set_default_values",
+          "args": [
+            "content"
+          ],
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "凯迪论坛"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "spider_name": "universal",
+  "description": "网站名称",
+  "type": "门户",
+  "index": "http://yourwebsite.com/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 300,
+      "universal.pipelines.MySQLPipeline": 301
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "起始链接"
+    ],
+    "method": "若为动态，请填写method和args。静态则删除",
+    "args": [
+      5,
+      10
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "splash": {
+    "auth": {
+      "user": "admin",
+      "password": "admin"
+    }
+  },
+  "allowed_domains": [],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths=\"//a[text()='下一页']\"), follow=True),Rule(LinkExtractor(restrict_xpaths=\"//a[text()='新闻链接']\"), callback='parse_item')]",
+  "item": {
+    "class": "NewsItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "//title/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "网站名称"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

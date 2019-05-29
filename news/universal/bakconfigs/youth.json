@@ -1,0 +1,182 @@
+{
+  "spider_name": "universal",
+  "description": "中国青年网",
+  "type": "新闻",
+  "index": "http://www.youth.cn/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://news.youth.cn/gn/index.htm",
+      "http://news.youth.cn/gn/index_1.htm",
+      "http://news.youth.cn/gn/index_2.htm",
+      "http://news.youth.cn/gn/index_3.htm",
+      "http://news.youth.cn/gn/index_4.htm",
+      "http://news.youth.cn/gn/index_5.htm",
+      "http://news.youth.cn/gn/index_6.htm",
+      "http://news.youth.cn/gn/index_7.htm",
+      "http://news.youth.cn/gn/index_8.htm",
+      "http://news.youth.cn/gn/index_9.htm"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+    "news.youth.cn"
+  ],
+  "rules": "[Rule(LinkExtractor(restrict_xpaths='//ul[@class=\"tj3_1\"]//a'), callback='parse_item')]",
+  "item": {
+    "class": "NewsItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "xpath",
+          "args": [
+            "//div[@class='page_title']/h1/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "xpath",
+          "args": [
+            "//span[@id='page_right']/text()"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "set_default_time",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        },
+        {
+          "method": "strip",
+          "args": [
+            "发稿时间："
+          ]
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M:%S",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "source": [
+        {
+          "method": "css",
+          "args": [
+            "#source_baidu a::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "strip"
+        },
+        {
+          "method": "strip",
+          "args": [
+            "\\n"
+          ]
+        }
+      ],
+      "source_url": [
+        {
+          "method": "css",
+          "args": [
+            "#source_baidu a::attr(href)"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "hot": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hits": [
+        {
+          "method": "set_value",
+          "args": [
+            0
+          ],
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "#container p::text"
+          ]
+        },
+        {
+          "method": "extract"
+        },
+        {
+          "method": "list2str",
+          "type": "wrap"
+        },
+        {
+          "method": "strip"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "中国青年网"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

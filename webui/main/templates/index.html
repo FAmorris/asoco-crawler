@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>可视化爬虫系统</title>
+    <link href="/static/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/lib/buttons.css" rel="stylesheet">
+    <link href="/static/lib/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="/static/templatemo-style.css" rel="stylesheet">
+
+    <script src="/static/lib/jquery.min.js"></script>
+    <script src="/static/lib/jquery.cookie.min.js"></script>
+    <script src="/static/lib/vue.min.js"></script>
+    <script src="/static/lib/popper.min.js"></script>
+    <script src="/static/lib/bootstrap.min.js"></script>
+    <script src="/static/lib/bootstrap-switch.min.js"></script>
+    <script src="/static/lib/bootstrap-filestyle.min.js"></script>
+    <script src="/static/templatemo-script.js"></script>
+</head>
+
+<body>
+
+
+<!-- 删除文件 模态框（Modal）:id=deleteModal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Are you ABSOLUTELY sure?
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>This action <strong>CANNOT</strong> be undone. This will permanently delete the
+                    <strong>${filename}</strong> .</p>
+                <p>Please type in the name of the repository to confirm.</p>
+            </div>
+            <div class="modal-footer">
+                <form accept-charset="UTF-8" v-bind:action="'delete?filename='+filename" class="js-normalize-submit"
+                      method="post">
+                    <p>
+                        <input type="text" class="form-control input-block" autofocus="" v-model="inputFilename"
+                               required="" name="filename" id="filename" data-filename="${filename}"
+                               placeholder="enter the filename you want to delete">
+                    </p>
+                    <button type="submit" class="btn btn-block btn-rounded btn-danger button-large"
+                            :disabled="inputFilename!=filename">
+                        I'm sure,delete ${filename}
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+
+{#消息模态框 id=msgModal#}
+
+<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    消息提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ msg }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-block btn-rounded btn-danger button-large" data-dismiss="modal">
+                    我知道了
+                </button>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+
+{#爬虫日志查看框 id=logModal#}
+
+<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    ${filename}日志
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p> ${logContent}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-block btn-rounded btn-danger button-large" data-dismiss="modal">
+                    我知道了
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+
+<!-- Left column -->
+<div class="templatemo-flex-row">
+    <div class="templatemo-sidebar    {{ sideCollapse }}  ">
+        <div id="sidebar-collapse-button">
+            <span class="fa fa-bars fa-2x"></span>
+        </div>
+        <header class="templatemo-site-header">
+            <div class="square"></div>
+            <h1>可视化爬虫系统</h1>
+        </header>
+        <div class="profile-photo-container">
+            <img src="/static/images/gerapy.png" alt="Profile Photo" class="img-responsive">
+            <div class="profile-photo-overlay"></div>
+        </div>
+        <div class="mobile-menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <nav class="templatemo-left-nav">
+            <ul>
+                <li><a href="#" class="active"><i class="fa fa-home fa-2x"></i><span>新闻爬虫</span></a></li>
+                <li><a href="weibo"><i class="fa fa-newspaper-o fa-2x"></i><span>微博爬虫</span></a></li>
+                <li><a href="config"><i class="fa fa-gear fa-2x"></i><span>系统设置</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Main content -->
+    <div class="templatemo-content col-1 light-gray-bg">
+        <div class="templatemo-content-container">
+
+            <div class="templatemo-flex-row flex-content-row">
+
+                <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
+                    <div class="table-responsive">
+
+                        <table class="table table-striped table-bordered templatemo-user-table">
+                            <thead>
+                            <tr>
+                                <td>#
+                                </td>
+                                <td>文件名称</td>
+                                <td>网站名称</td>
+                                <td>网站主页</td>
+                                <td>是否启用</td>
+                                <td>运行状态</td>
+                                <td>操作</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in jsonlist %}
+                                <tr data-filename="{{ i.name }}">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ i.name }}</td>
+                                    <td>{{ i.website }}</td>
+                                    <td><a href="{{ i.index }}" target="_blank">{{ i.index }}</a></td>
+                                    <td>
+                                        <div class="switch" data-on-label="SI" data-off-label="NO">
+                                            {% if i.state %}
+                                                <input class="b-switch" type="checkbox" checked/> {% else %}
+                                                <input class="b-switch" type="checkbox"/> {% endif %}
+                                        </div>
+                                    </td>
+                                    <td>{{ i.message }}</td>
+                                    <td>
+                                        <a href="edit/{{ i.simpleName }}"
+                                           class="button button-primary button-square button-small"
+                                           title="编辑爬虫">
+                                            <span><i
+                                                    class="fa fa-edit"></i></span></a>
+
+                                        <button class="seelogButton button button-action button-square button-small"><span><i
+                                                class="fa fa-eye" title="查看日志"></i></span></button>
+                                        <button class="deleteButton button button-caution button-square button-small "
+                                                title="删除爬虫">
+                                            <span><i class="fa fa-remove"></i> </span></button>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Second row ends -->
+            <form action="addfile" class="templatemo-login-form" method="post" enctype="multipart/form-data">
+
+                <div class="row form-group">
+                    <div class="col-lg-12">
+                        <label class="control-label templatemo-block">File Input</label>
+                        <!-- <input type="file" name="fileToUpload" id="fileToUpload" class="margin-bottom-10"> -->
+                        <input type="file" name="fileToUpload" id="fileToUpload" class="filestyle"
+                               data-buttonname="btn-primary" data-buttonbefore="true" data-icon="false" tabindex="-1"
+                               style="position: absolute; clip: rect(0px 0px 0px 0px);">
+                    </div>
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="templatemo-blue-button"><span><i
+                            class="fa fa-cloud-upload"></i> 导入数据</span>
+                    </button>
+                    <a type="button button-primary" href="edit/untitle" class="templatemo-white-button"
+                       style="text-decoration: none">
+                        <span><i class="fa fa-plus"> </i> 新建文件</span>
+                    </a>
+                </div>
+            </form>
+            <footer class="text-right">
+                <p>Copyright &copy; 2017 BUAA</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var msg = "{{ msg }}"
+    var deleteModal = new Vue({
+        el: "#deleteModal",
+        data: {
+            filename: filename,
+            inputFilename: ''
+        },
+        delimiters: ["${", "}"]
+    })
+    $(".deleteButton").click(function (event) {
+        deleteModal.filename = $(this).parents("tr").data('filename')
+        console.log("delete" + $(this).parents("tr").data("filename"))
+        event.preventDefault()
+        $("#deleteModal").modal()
+    })
+    var logModal = new Vue({
+        el: "#logModal",
+        data: {
+            logContent: '',
+        },
+        delimiters: ["${", "}"]
+    })
+    $(".seelogButton").click(function (event) {
+        var filename = $(this).parents("tr").data("filename")
+        $.get("seelog", {
+            filename: filename
+        }, function (resp) {
+            logModal.logContent = resp
+            logModal.filename = filename
+            event.preventDefault()
+            $("#logModal").modal()
+        })
+    })
+    $(".b-switch").bootstrapSwitch({
+        onSwitchChange: function (event, state) {
+            var filename = $(this).parents("tr").data('filename')
+            if (state) {
+                $.post("doUse", {
+                    filename: filename
+                }, function (res) {
+                    console.log(res)
+                })
+            } else {
+                $.post("doNotUse", {
+                    filename: filename
+                }, function (res) {
+                    console.log(res)
+                })
+            }
+        }
+    })
+    $(document).ready(function () {
+        if (msg != null && msg.length > 0) {
+            $("#msgModal").modal()
+        }
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+{
+  "spider_name": "universal",
+  "description": "博客中国",
+  "type": "博客",
+  "index": "http://tuijian.blogchina.com/",
+  "settings": {
+    "ITEM_PIPELINES": {
+      "universal.pipelines.UniversalPipeline": 299,
+      "universal.pipelines.MySQLPipeline": 300
+    }
+  },
+  "start_urls": {
+    "type": "static",
+    "values": [
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/1",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/2",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/3",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/4",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/5",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/6",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/7",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/8",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/9",
+      "http://tuijian.blogchina.com/list/index/flag/2/channel/1/page/10"
+    ],
+    "splash": {
+      "enable": false
+    }
+  },
+  "allowed_domains": [
+  ],
+  "rules": "[Rule(LinkExtractor(restrict_css='li.tit_a>a'), callback='parse_item')]",
+  "item": {
+    "class": "BlogItem",
+    "attrs": {
+      "title": [
+        {
+          "method": "css",
+          "args": [
+            "div.d_testbox::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        }
+      ],
+      "url": [
+        {
+          "method": "get_attr",
+          "args": [
+            "url"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "publish_time": [
+        {
+          "method": "css",
+          "args": [
+            "span.time::text"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "date_transform",
+          "args": [
+            "%Y-%m-%d %H:%M:%S",
+            "%Y-%m-%d %H:%M:%S"
+          ],
+          "type": "wrap"
+        }
+      ],
+      "hot": [
+        {
+          "method": "xpath",
+          "args": [
+            "//body"
+          ]
+        },
+        {
+          "method": "get_browser_count",
+          "type": "wrap"
+        }
+      ],
+      "replies": [
+        {
+          "method": "css",
+          "args": [
+            "ul.num_hot"
+          ]
+        },
+        {
+          "method": "re_first",
+          "args": [
+            "<li><i class=\"fa fa-comment-o\"></i>(\\d+)</li>"
+          ]
+        }
+      ],
+      "hits": [
+        {
+          "method": "xpath",
+          "args": [
+            "//body"
+          ]
+        },
+        {
+          "method": "get_browser_count",
+          "type": "wrap"
+        }
+      ],
+      "content": [
+        {
+          "method": "css",
+          "args": [
+            "div.article"
+          ]
+        },
+        {
+          "method": "extract_first"
+        },
+        {
+          "method": "filter_tags",
+          "type": "wrap"
+        }
+      ],
+      "crawl_time": [
+        {
+          "method": "get_time",
+          "type": "wrap"
+        }
+      ],
+      "website": [
+        {
+          "method": "set_value",
+          "args": [
+            "博客中国"
+          ],
+          "type": "wrap"
+        }
+      ]
+    }
+  }
+}

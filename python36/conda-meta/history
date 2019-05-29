@@ -1,0 +1,11 @@
+==> 2017-12-20 10:49:57 <==
+# cmd: D:\apache\miniconda\Scripts\conda create -n python36 python=3.6
++defaults::certifi-2017.11.5-py36hb8ac631_0
++defaults::pip-9.0.1-py36h226ae91_4
++defaults::python-3.6.3-h3b118a2_4
++defaults::setuptools-36.5.0-py36h65f9e6e_0
++defaults::vc-14-h2379b0c_2
++defaults::vs2015_runtime-14.0.25123-hd4c4e62_2
++defaults::wheel-0.30.0-py36h6c3ec14_1
++defaults::wincertstore-0.2-py36h7fe50ca_0
+# create specs: python 3.6*
