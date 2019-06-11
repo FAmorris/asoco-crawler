@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+flask = "*"
+aiohttp = "*"
+requests = "*"
+pyquery = "*"
+watchdog = "*"
+scrapy = "*"
+redis = "*"
+django = "*"
+jsonschema = "*"
+py2neo = "*"
+
+[requires]
+python_version = "3.7"

@@ -1,11 +1,11 @@
 ﻿# Redis数据库地址
-REDIS_HOST = 'localhost'
+REDIS_HOST = '192.168.1.178'
 
 # Redis端口
 REDIS_PORT = 6379
 
 # Redis密码，如无填None
-REDIS_PASSWORD = None
+REDIS_PASSWORD = '123456'
 
 # 代理池端口号
 PROXY_PORT = 5555
